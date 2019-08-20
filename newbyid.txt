@@ -1,0 +1,13 @@
+
+@Query("from Products where price >= :p")
+Optional<Products> findByPrice(@Param("p") long price);
+}
+	@RequestMapping("/pro/{price}")
+    public Products getProductByPrice(@PathVariable long price){
+        return productService.getProductByPrice(price);
+    }
+@Override
+	public Products getProductByPrice(long price) {
+
+	  return productDAO.findByPrice(price).get();
+	}
